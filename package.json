@@ -1,0 +1,29 @@
+{
+  "name": "node-api",
+  "version": "0.0.0",
+  "main": "app.js",
+  "dependencies": {
+    "babel": "^5.8.21",
+    "bunyan": "^1.4.0",
+    "crypto": "0.0.3",
+    "dot": "^1.0.3",
+    "dotenv": "^1.2.0",
+    "lodash": "^3.10.1",
+    "moment": "^2.10.6",
+    "mongoose": "^4.1.2",
+    "mongoose-paginate": "^4.0.1",
+    "node-mandrill": "^1.0.1",
+    "nodemailer": "^2.5.0",
+    "q": "^1.4.1",
+    "request": "^2.60.0",
+    "restify": "^3.0.3"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "start" : "node app.js",
+    "build" : "docker build -t scholas-citizenship-api:develop ."
+  },
+  "private": true
+}
