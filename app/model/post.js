@@ -12,7 +12,7 @@ var Post = new Schema({
 	likes: { type: Number, required: true },
 	comments: [{ type: Schema.Types.ObjectId, ref: 'Comment', default: null }],
 	community: { type: Schema.Types.ObjectId, ref: 'Community', default: null },
-	status: { type: String, required: true },
+	status: { type: String },
 	createdOn: { type: Date, default: Date.now, required: true },
 });
 
