@@ -8,4 +8,5 @@ module.exports = function(server) {
 
 	server.post('/regsiter', auth.register);
 
+
 };
