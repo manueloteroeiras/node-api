@@ -42,8 +42,6 @@ exports.index = function(data) {
 	return Q.Promise(function(resolve, reject) {
 
 		var query = { role: "user" };
-		if (data.query.agency) query["agency"] = data.query.agency;
-
 
 		User.paginate(
 			query,
@@ -51,7 +49,7 @@ exports.index = function(data) {
 				sortBy: { createdOn:-1},
 				limit: data.query.limit || 30,
 				page: data.query.page || 1,
-				populate: [ "agency" ],
+				populate: [ "community" ],
 				lean: true
 			},
 			function (err, users, pageCount, itemCount) {

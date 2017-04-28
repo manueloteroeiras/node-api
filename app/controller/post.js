@@ -6,11 +6,12 @@ var Q = require('q');
 
 exports.index = function(data) {
 	return Q.Promise(function(resolve, reject) {
-		Post.find().populate([ 'community', 'images', 'comments', 'user' ]).exec(function(err, response){
+		Post.find().populate([ 'community', 'images', 'comments', 'user' ]).sort('-createdOn').exec(function(err, response){
 			(!err) ? resolve({ result: response }) : reject({ code : 500, error: err })
 		});
 	});
 };
+
 
 exports.create = function(data) {
 	return Q.Promise(function(resolve, reject) {
@@ -42,7 +43,7 @@ exports.update = function(data) {
 exports.show = function(data) {
 	return Q.Promise(function(resolve, reject) {
 		Post
-			.findById(data.params.id)
+			.find({ community: data.params.id })
 			.lean()
 			.exec(function (err, result) {
 				if (err) return reject({ code: 500, error: err });

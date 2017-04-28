@@ -7,7 +7,7 @@ var log = require('../log');
 exports.auth = function(req, res, next) {
 	log.info("POST /auth");
 	if (req.body && req.body.email && req.body.password) {
-		User.findOne({ email: req.body.email.toLowerCase() }, function(err, user){
+		User.findOne({ email: req.body.email.toLowerCase() }).populate('community').exec(function(err, user){
 			if (err) {
 				log.error(err);
 				return res.send(500, "Error, try later");
