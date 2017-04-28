@@ -5,7 +5,7 @@ exports.index = function(req, res) {
 	log.info("GET /api/posts --- sessionId: "+req.userId);
 
 	PostCtrl.index(req).then(function(data) {
-		log.info(data);
+		// log.info(data);
 		res.send(200, data);
 	}, function(err) {
 		log.error(err);
