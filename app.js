@@ -37,11 +37,11 @@ server.use(restify.acceptParser(server.acceptable));
 server.use(restify.queryParser());
 server.use(restify.bodyParser());
 
-server.pre(restify.CORS({
-	origins: ['*'],
-	credentials: true,
-	headers: ['X-Requested-With', 'Authorization']
-}));
+// server.pre(restify.CORS({
+// 	origins: ['*'],
+// 	credentials: true,
+// 	headers: ['X-Requested-With', 'Authorization']
+// }));
 
 server.pre(restify.fullResponse());
 
@@ -66,8 +66,8 @@ server.on('after', restify.auditLogger({ log: log }));
 require('./app/routes')(server);
 
 // Start server
-server.listen(config.port, function () {
-	log.info('Restify server listening on %d, in %s mode', config.port, config.env);
+server.listen(config.port || 8080, function () {
+	console.log('Restify server listening on %d, in %s mode', config.port, config.env);
 });
 
 // Expose app
